@@ -109,6 +109,9 @@ button:focus, input:focus, select:focus, textarea:focus, a:focus {
 @media (max-width: 768px) {
     #mobile-menu {
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+        height: 100vh;
+        overflow-y: auto;
+        overscroll-behavior: contain;
     }
     
     .mobile-menu-link {

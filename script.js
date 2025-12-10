@@ -25,19 +25,32 @@ window.addEventListener('scroll', () => {
 
 // Mobile Menu
 const mobileMenu = document.getElementById('mobile-menu');
+function openMobile() {
+    mobileMenu.classList.remove('translate-x-full');
+    document.body.classList.add('menu-open');
+    document.body.style.overflow = 'hidden';
+}
+function closeMobile() {
+    mobileMenu.classList.add('translate-x-full');
+    document.body.classList.remove('menu-open');
+    document.body.style.overflow = 'auto';
+}
 function toggleMobile() {
     const isOpen = !mobileMenu.classList.contains('translate-x-full');
-    mobileMenu.classList.toggle('translate-x-full');
-    if (isOpen) {
-        document.body.classList.remove('menu-open');
-        document.body.style.overflow = 'auto';
-    } else {
-        document.body.classList.add('menu-open');
-        document.body.style.overflow = 'hidden';
-    }
+    isOpen ? closeMobile() : openMobile();
 }
 document.getElementById('mobile-btn').addEventListener('click', toggleMobile);
 document.getElementById('close-mobile').addEventListener('click', toggleMobile);
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
+        closeMobile();
+    }
+});
+window.addEventListener('resize', () => {
+    if (window.innerWidth >= 768) {
+        closeMobile();
+    }
+});
 
 // Lightbox
 const lightbox = document.getElementById('lightbox');
@@ -71,10 +84,12 @@ function initRevealOnScroll() {
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 }
 
-// Simple parallax for elements with .parallax-bg
+// Simple parallax for elements with .parallax-bg (disabled on mobile for performance)
 function initParallax() {
     const el = document.querySelector('.parallax-bg');
     if (!el) return;
+    const mql = window.matchMedia('(max-width: 768px)');
+    if (mql.matches) return;
     window.addEventListener('scroll', () => {
         const sc = window.scrollY;
         // move slower than scroll for parallax effect
