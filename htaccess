@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# 1. Remove .html extension (internally serve .html file for clean URL)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^([^/]+)/?$ $1.html [L]
+
+# 2. Redirect external .html requests to clean URL (SEO friendly)
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?]
+RewriteRule ^ %1 [R=301,L]
