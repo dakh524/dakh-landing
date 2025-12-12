@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+    <script>
+        (function() {
+            // Get the current path
+            var path = window.location.pathname;
+            
+            // Remove leading and trailing slashes
+            path = path.replace(/^\/|\/$/g, '');
+            
+            // List of valid pages
+            var validPages = {
+                '': 'index.html',
+                'index': 'index.html',
+                'about': 'about.html',
+                'services': 'services.html',
+                'programs': 'programs.html',
+                'life': 'life.html'
+            };
+            
+            // Check if path exists in valid pages
+            if (validPages.hasOwnProperty(path)) {
+                // Redirect to the correct HTML file
+                window.location.replace(validPages[path]);
+            } else {
+                // If path doesn't exist, replace the page content with 404
+                document.documentElement.innerHTML = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>404 - Page Not Found | Dakh Edu Solution</title><link rel="icon" href="Dakh edu.jpg" type="image/png" sizes="64x64"><script src="https://cdn.tailwindcss.com"><\/script><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet"></head><body class="bg-slate-50 text-slate-800 font-sans antialiased"><div class="min-h-screen flex items-center justify-center px-4"><div class="text-center"><h1 class="text-9xl font-bold text-brand-600 mb-4">404</h1><h2 class="text-3xl font-bold text-slate-900 mb-4">Page Not Found</h2><p class="text-slate-600 mb-8">The page you are looking for does not exist.</p><a href="/" class="inline-block px-6 py-3 bg-brand-600 text-white font-bold rounded-full hover:bg-brand-700 transition-colors">Go Home</a></div></div></body></html>';
+            }
+        })();
+    </script>
+</head>
+<body>
+    <div style="text-align: center; padding: 50px;">
+        <p>Redirecting...</p>
+    </div>
+</body>
+</html>
