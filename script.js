@@ -411,7 +411,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initKeyboardNavigation();
     initTouchGestures();
-    initPerformanceMonitoring();
+    // Performance logging disabled to reduce console noise and potential LCP overhead
+    // initPerformanceMonitoring();
     
     // Show page loaded notification (optional)
     // showToast('Page loaded successfully', 'success', 2000);

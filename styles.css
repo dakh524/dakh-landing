@@ -164,35 +164,141 @@ html {
     scroll-behavior: smooth;
 }
 
+/* Base Typography & Layout */
+body {
+    line-height: 1.65;
+    color: #0f172a;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #0f172a;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+h1 { font-size: clamp(2.25rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.9rem, 4vw, 2.75rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+p  { font-size: 1rem; }
+
+.content-readable { max-width: 70ch; }
+
+.section-padding {
+    padding-top: clamp(3.5rem, 6vw, 4.5rem);
+    padding-bottom: clamp(3.5rem, 6vw, 4.5rem);
+}
+
+/* Brand Motif & Chips */
+.corner-motif {
+    position: relative;
+    overflow: hidden;
+}
+.corner-motif::after {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    top: -40px;
+    right: -40px;
+    background: radial-gradient(circle at center, rgba(99, 102, 241, 0.18), transparent 60%);
+    transform: rotate(15deg);
+    pointer-events: none;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border: 1px solid transparent;
+}
+.chip-indigo { background: #eef2ff; color: #4338ca; border-color: #e0e7ff; }
+.chip-blue   { background: #eff6ff; color: #1d4ed8; border-color: #dbeafe; }
+.chip-green  { background: #ecfdf3; color: #15803d; border-color: #dcfce7; }
+.chip-rose   { background: #fff1f2; color: #be123c; border-color: #ffe4e6; }
+.chip-amber  { background: #fef3c7; color: #b45309; border-color: #fde68a; }
+
+/* CTA Glow */
+.cta-glow {
+    box-shadow: 0 14px 30px rgba(79, 70, 229, 0.28), 0 0 0 0 rgba(124, 58, 237, 0.25);
+    animation: ctaPulse 2.4s ease-in-out infinite;
+}
+@keyframes ctaPulse {
+    0%   { box-shadow: 0 14px 30px rgba(79, 70, 229, 0.28), 0 0 0 0 rgba(124, 58, 237, 0.25); }
+    50%  { box-shadow: 0 16px 36px rgba(79, 70, 229, 0.32), 0 0 0 14px rgba(124, 58, 237, 0.05); }
+    100% { box-shadow: 0 14px 30px rgba(79, 70, 229, 0.28), 0 0 0 0 rgba(124, 58, 237, 0.0); }
+}
+
+.msme-block {
+    background: radial-gradient(circle at 20% 20%, rgba(99,102,241,0.08), transparent 40%),
+                radial-gradient(circle at 80% 30%, rgba(236,72,153,0.07), transparent 45%),
+                #fff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.06);
+    border-radius: 28px;
+}
+
 /* Improved Card Hover Effects */
 .group:hover .group-hover\:scale-110 {
     transform: scale(1.1);
     transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Enhanced Button Styles */
-.btn-primary {
+/* Button System */
+.btn,
+.btn-primary,
+.btn-secondary,
+.btn-ghost {
     position: relative;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    line-height: 1.2;
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0.85rem 1.3rem;
+    border: 1px solid transparent;
 }
 
-.btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
+.btn:active,
+.btn-primary:active,
+.btn-secondary:active,
+.btn-ghost:active { transform: translateY(1px); }
+
+.btn-primary {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: #fff;
+    box-shadow: 0 14px 30px rgba(79, 70, 229, 0.25);
 }
 
-.btn-primary:hover::before {
-    width: 300px;
-    height: 300px;
+.btn-primary:hover { box-shadow: 0 16px 34px rgba(79, 70, 229, 0.32); }
+
+.btn-secondary {
+    background: #fff;
+    color: #0f172a;
+    border-color: #e2e8f0;
+}
+
+.btn-secondary:hover {
+    border-color: #cbd5e1;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: #4f46e5;
+    border-color: transparent;
+}
+
+.btn-ghost:hover {
+    background: rgba(79, 70, 229, 0.08);
 }
 
 /* Enhanced Card Shadows */
@@ -355,6 +461,7 @@ html {
     background: linear-gradient(135deg, #4f46e5, #7c3aed, #ec4899);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     mask-composite: exclude;
     opacity: 0;
     transition: opacity 0.3s;
@@ -1076,15 +1183,9 @@ html {
 }
 
 /* Better Link Underlines */
-a:not(.no-underline) {
-    text-decoration: underline;
-    text-decoration-color: transparent;
-    text-underline-offset: 4px;
-    transition: text-decoration-color 0.2s;
-}
-
-a:not(.no-underline):hover {
-    text-decoration-color: currentColor;
+/* Disable default link underlines globally; add class .link-underline if needed */
+a {
+    text-decoration: none;
 }
 
 /* Improved Button Groups */
