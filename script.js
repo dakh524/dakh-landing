@@ -39,8 +39,23 @@ function toggleMobile() {
     const isOpen = !mobileMenu.classList.contains('translate-x-full');
     isOpen ? closeMobile() : openMobile();
 }
-document.getElementById('mobile-btn').addEventListener('click', toggleMobile);
-document.getElementById('close-mobile').addEventListener('click', toggleMobile);
+const mobileBtn = document.getElementById('mobile-btn');
+const closeMobileBtn = document.getElementById('close-mobile');
+
+if (mobileBtn) {
+    mobileBtn.addEventListener('click', () => {
+        toggleMobile();
+        const isOpen = !mobileMenu.classList.contains('translate-x-full');
+        mobileBtn.setAttribute('aria-expanded', isOpen);
+    });
+}
+
+if (closeMobileBtn) {
+    closeMobileBtn.addEventListener('click', () => {
+        toggleMobile();
+        if (mobileBtn) mobileBtn.setAttribute('aria-expanded', 'false');
+    });
+}
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && !mobileMenu.classList.contains('translate-x-full')) {
         closeMobile();
@@ -106,7 +121,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // Scroll-spy: highlight nav links when sections are in view
 function initScrollSpy() {
     const links = Array.from(document.querySelectorAll('.nav-link'));
-    const sections = links.map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+    const sections = links
+        .map(l => {
+            const href = l.getAttribute('href') || '';
+            // Only handle in-page anchors to avoid querySelector errors
+            return href.startsWith('#') ? document.querySelector(href) : null;
+        })
+        .filter(Boolean);
     if (sections.length === 0) return;
     const opts = { root: null, rootMargin: '-40% 0px -40% 0px', threshold: 0 };
     const io = new IntersectionObserver(entries => {
@@ -175,12 +196,223 @@ function closeModal() {
     document.body.style.overflow = 'auto';
 }
 
-// Toast (if needed for future use)
-function showToast(msg) {
-    const toast = document.getElementById('toast');
-    if (toast) {
-        document.getElementById('toast-msg').innerText = msg;
-        toast.classList.remove('translate-y-40');
-        setTimeout(() => toast.classList.add('translate-y-40'), 3000);
+// Toast Notification System
+function createToastContainer() {
+    if (!document.getElementById('toast-container')) {
+        const container = document.createElement('div');
+        container.id = 'toast-container';
+        container.className = 'toast-container';
+        document.body.appendChild(container);
     }
 }
+
+function showToast(message, type = 'info', duration = 4000) {
+    createToastContainer();
+    const container = document.getElementById('toast-container');
+    
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+    
+    const icons = {
+        success: 'fa-check-circle',
+        error: 'fa-exclamation-circle',
+        warning: 'fa-triangle-exclamation',
+        info: 'fa-info-circle'
+    };
+    
+    toast.innerHTML = `
+        <i class="fa-solid ${icons[type] || icons.info} toast-icon"></i>
+        <div class="toast-content">
+            <div class="toast-message">${message}</div>
+        </div>
+        <button class="toast-close" aria-label="Close notification">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    `;
+    
+    container.appendChild(toast);
+    
+    // Trigger animation
+    setTimeout(() => toast.classList.add('show'), 10);
+    
+    // Close handlers
+    const closeBtn = toast.querySelector('.toast-close');
+    const closeToast = () => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+    };
+    
+    closeBtn.addEventListener('click', closeToast);
+    setTimeout(closeToast, duration);
+}
+
+// Image Lazy Loading Enhancement
+function initImageLoading() {
+    const images = document.querySelectorAll('img[data-src]');
+    
+    if ('IntersectionObserver' in window) {
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                    img.removeAttribute('data-src');
+                    observer.unobserve(img);
+                }
+            });
+        }, {
+            rootMargin: '50px'
+        });
+        
+        images.forEach(img => imageObserver.observe(img));
+    } else {
+        // Fallback for older browsers
+        images.forEach(img => {
+            img.src = img.dataset.src;
+            img.classList.add('loaded');
+        });
+    }
+    
+    // Handle regular images
+    document.querySelectorAll('img:not([data-src])').forEach(img => {
+        if (img.complete) {
+            img.classList.add('loaded');
+        } else {
+            img.addEventListener('load', () => {
+                img.classList.add('loaded');
+            });
+            img.addEventListener('error', () => {
+                img.alt = 'Image failed to load';
+            });
+        }
+    });
+}
+
+// Smooth Scroll Enhancement
+function initSmoothScroll() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href === '#' || href === '#!') return;
+            
+            const target = document.querySelector(href);
+            if (target) {
+                e.preventDefault();
+                const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+                
+                // Update URL without jumping
+                history.pushState(null, null, href);
+            }
+        });
+    });
+}
+
+// Keyboard Navigation Enhancement
+function initKeyboardNavigation() {
+    // Skip to content link
+    const skipLink = document.createElement('a');
+    skipLink.href = '#main-content';
+    skipLink.className = 'skip-to-content';
+    skipLink.textContent = 'Skip to main content';
+    document.body.insertBefore(skipLink, document.body.firstChild);
+    
+    // Add main content ID if it doesn't exist
+    const mainContent = document.querySelector('main') || document.querySelector('#home') || document.body;
+    if (!mainContent.id) {
+        mainContent.id = 'main-content';
+    }
+    
+    // Enhanced keyboard navigation for cards
+    document.querySelectorAll('.card-interactive, .program-card, .card-enhanced').forEach(card => {
+        if (!card.hasAttribute('tabindex')) {
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+        }
+        
+        card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                const link = card.querySelector('a');
+                if (link) {
+                    link.click();
+                }
+            }
+        });
+    });
+}
+
+// Mobile Touch Gestures
+function initTouchGestures() {
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (!mobileMenu) return;
+    
+    mobileMenu.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    mobileMenu.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0 && !mobileMenu.classList.contains('translate-x-full')) {
+                // Swipe left - close menu
+                closeMobile();
+            }
+        }
+    }
+}
+
+// Performance Monitoring
+function initPerformanceMonitoring() {
+    if ('PerformanceObserver' in window) {
+        try {
+            const perfObserver = new PerformanceObserver((list) => {
+                for (const entry of list.getEntries()) {
+                    if (entry.entryType === 'largest-contentful-paint') {
+                        console.log('LCP:', entry.renderTime || entry.loadTime);
+                    }
+                }
+            });
+            perfObserver.observe({ entryTypes: ['largest-contentful-paint'] });
+        } catch (e) {
+            // Performance observer not supported
+        }
+    }
+}
+
+// Enhanced Error Handling
+window.addEventListener('error', (e) => {
+    console.error('Error:', e.error);
+    // Could send to error tracking service
+});
+
+window.addEventListener('unhandledrejection', (e) => {
+    console.error('Unhandled promise rejection:', e.reason);
+    // Could send to error tracking service
+});
+
+// Initialize all UX enhancements
+document.addEventListener('DOMContentLoaded', () => {
+    initImageLoading();
+    initSmoothScroll();
+    initKeyboardNavigation();
+    initTouchGestures();
+    initPerformanceMonitoring();
+    
+    // Show page loaded notification (optional)
+    // showToast('Page loaded successfully', 'success', 2000);
+});

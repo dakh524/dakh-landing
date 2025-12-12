@@ -26,13 +26,13 @@
     <!-- Tailwind Config -->
     <script src="tailwind-config.js"></script>
 </head>
-<body class="bg-slate-50 text-slate-800 overflow-x-hidden font-sans antialiased">
+<body class="bg-slate-50 text-slate-800 overflow-x-hidden font-sans antialiased" aria-label="Dakh Edu Solution Website">
 
     <!-- Scroll Progress -->
     <div id="scroll-progress" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-brand-500 via-purple-500 to-pink-500 z-[100] transition-all duration-150" style="width: 0%"></div>
 
     <!-- Navbar -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent h-16 md:h-20 flex items-center">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-transparent h-16 md:h-20 flex items-center" role="navigation" aria-label="Main navigation">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="flex justify-between items-center">
                 <!-- Logo -->
@@ -40,7 +40,7 @@
                     <div class="relative">
                         <div class="absolute -inset-1 bg-gradient-to-r from-brand-600 to-purple-600 rounded-xl blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
                         <div class="relative w-9 h-9 sm:w-10 sm:h-10 md:w-11 md:h-11 bg-white rounded-xl flex items-center justify-center text-brand-600 shadow-sm border border-slate-100 overflow-hidden">
-                            <img src="Dakh edu.jpg" alt="Dakh Edu Logo" class="w-full h-full object-cover">
+                            <img src="Dakh edu.jpg" alt="Dakh Edu Logo" class="w-full h-full object-cover" loading="eager">
                         </div>
                     </div>
                     <div class="flex flex-col">
@@ -69,20 +69,20 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-btn" class="md:hidden p-2.5 text-slate-600 hover:text-brand-600 hover:bg-brand-50 rounded-xl transition-all duration-200 border border-transparent hover:border-brand-100 active:scale-95">
-                    <i class="fa-solid fa-bars-staggered text-xl"></i>
+                <button id="mobile-btn" class="md:hidden p-2.5 text-slate-600 hover:text-brand-600 hover:bg-brand-50 rounded-xl transition-all duration-200 border border-transparent hover:border-brand-100 active:scale-95" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-menu">
+                    <i class="fa-solid fa-bars-staggered text-xl" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
 
         <!-- Mobile Menu Overlay -->
-        <div id="mobile-menu" class="fixed inset-0 z-40 bg-white backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col shadow-2xl">
+        <div id="mobile-menu" class="fixed inset-0 z-40 bg-white backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col shadow-2xl" role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
             <!-- Mobile Menu Header -->
             <div class="p-4 sm:p-6 flex justify-between items-center border-b border-slate-200 bg-white/80 backdrop-blur-sm">
                 <div class="flex items-center gap-2 sm:gap-3">
                     <div class="relative">
                         <div class="relative w-8 h-8 sm:w-10 sm:h-10 bg-white rounded-lg flex items-center justify-center text-brand-600 shadow-sm border border-slate-100 overflow-hidden">
-                            <img src="Dakh edu.jpg" alt="Dakh Edu Logo" class="w-full h-full object-cover">
+                            <img src="Dakh edu.jpg" alt="Dakh Edu Logo" class="w-full h-full object-cover" loading="eager">
                         </div>
                     </div>
                     <span class="font-display font-bold text-lg sm:text-xl text-slate-900">Dakh<span class="text-brand-600">Edu</span></span>
@@ -132,18 +132,19 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden bg-grid-slate-100">
+    <section id="home" class="hero-enhanced relative min-h-screen flex items-center pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden bg-grid-slate-100" aria-label="Hero section">
         <!-- Background Aurora -->
         <div class="absolute inset-0 pointer-events-none overflow-hidden">
             <div class="absolute top-[-10%] left-[-10%] w-[60%] h-[40%] md:w-[40%] rounded-full bg-purple-400/20 blur-[60px] md:blur-[80px] animate-aurora"></div>
             <div class="absolute bottom-[-10%] right-[-10%] w-[60%] h-[40%] md:w-[40%] rounded-full bg-brand-500/20 blur-[60px] md:blur-[80px] animate-aurora" style="animation-delay: -5s;"></div>
+            <div class="absolute top-[50%] left-[50%] w-[30%] h-[30%] rounded-full bg-pink-400/10 blur-[100px] animate-aurora" style="animation-delay: -10s;"></div>
         </div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
             <div class="grid lg:grid-cols-12 gap-12 md:gap-16 items-center">
                 <div class="lg:col-span-7" data-aos="fade-right" data-aos-duration="1000">
                     <!-- Badge -->
-                    <div class="inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-white border border-brand-100 text-brand-700 text-[10px] md:text-xs font-bold mb-6 md:mb-8 shadow-sm hover:shadow-md transition-all cursor-default tracking-wide uppercase">
+                    <div class="badge-modern inline-flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-white border border-brand-100 text-brand-700 text-[10px] md:text-xs font-bold mb-6 md:mb-8 shadow-sm hover:shadow-md transition-all cursor-default tracking-wide uppercase">
                         <span class="relative flex h-2 w-2">
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
                           <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-500"></span>
@@ -152,8 +153,8 @@
                     </div>
                     
                     <!-- Main Title -->
-                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold text-slate-900 leading-[1.1] mb-6 tracking-tight">
-                        Build the <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-purple-600">Future</span><br>
+                    <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold text-slate-900 leading-[1.1] mb-6 tracking-tight text-shadow-sm">
+                        Build the <span class="gradient-text">Future</span><br>
                         Invest in <span class="relative inline-block">
                             Skills
                             <svg class="absolute w-full h-2 md:h-3 -bottom-1 left-0 text-brand-300" viewBox="0 0 100 10" preserveAspectRatio="none">
@@ -168,12 +169,12 @@
                     
                     <!-- Buttons -->
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="/programs" class="px-8 py-4 rounded-2xl bg-slate-900 text-white font-bold shadow-xl shadow-slate-900/20 hover:bg-brand-600 hover:shadow-brand-600/30 hover:-translate-y-1 transition-all active:scale-95 flex items-center justify-center gap-2">
-                            <span>Explore Programs</span>
-                            <i class="fa-solid fa-arrow-right text-sm"></i>
+                        <a href="/programs" class="btn-primary btn-hover-lift px-8 py-4 rounded-2xl bg-slate-900 text-white font-bold shadow-xl shadow-slate-900/20 hover:bg-brand-600 hover:shadow-brand-600/30 hover:-translate-y-1 transition-all active:scale-95 flex items-center justify-center gap-2 relative overflow-hidden">
+                            <span class="relative z-10">Explore Programs</span>
+                            <i class="fa-solid fa-arrow-right text-sm relative z-10 transition-transform group-hover:translate-x-1"></i>
                         </a>
-                        <a href="/about" class="px-8 py-4 rounded-2xl bg-white border border-slate-200 text-slate-700 font-bold hover:border-brand-200 hover:text-brand-700 hover:bg-brand-50 transition-all flex items-center justify-center gap-3 group shadow-sm">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-white transition-colors">
+                        <a href="/about" class="btn-hover-lift px-8 py-4 rounded-2xl bg-white border-2 border-slate-200 text-slate-700 font-bold hover:border-brand-300 hover:text-brand-700 hover:bg-gradient-to-r hover:from-brand-50 hover:to-purple-50 transition-all flex items-center justify-center gap-3 group shadow-sm hover:shadow-md">
+                            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center group-hover:bg-white group-hover:scale-110 transition-all">
                                 <i class="fa-solid fa-play text-xs text-slate-900 ml-0.5"></i>
                             </div>
                             <span>How it works</span>
@@ -183,9 +184,9 @@
                     <!-- Trust Bar -->
                     <div class="mt-10 md:mt-12 pt-8 border-t border-slate-200 flex items-center gap-6 md:gap-8">
                          <div class="flex -space-x-3">
-                             <img class="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/1.jpg" alt="User">
-                             <img class="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/2.jpg" alt="User">
-                             <img class="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/3.jpg" alt="User">
+                             <img class="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/1.jpg" alt="User" loading="lazy">
+                             <img class="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/men/2.jpg" alt="User" loading="lazy">
+                             <img class="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white" src="https://randomuser.me/api/portraits/women/3.jpg" alt="User" loading="lazy">
                              <div class="w-8 h-8 md:w-10 md:h-10 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-[10px] md:text-xs font-bold text-slate-600">+500</div>
                          </div>
                          <div class="text-sm">
@@ -207,7 +208,7 @@
                         </div>
                     </div>
                     <div class="relative z-10 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl shadow-brand-900/10 border-4 md:border-8 border-white transform md:rotate-3 hover:rotate-0 transition-transform duration-700 ease-out bg-white">
-                        <img src="images/Internship program.jpg" alt="internship program" class="w-full h-[600px] md:h-[500px] object-cover">
+                        <img src="images/Internship program.jpg" alt="internship program" class="w-full h-[600px] md:h-[500px] object-cover" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -218,21 +219,21 @@
     <section class="bg-white border-y border-slate-100 py-8 md:py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
-                <div class="p-4 md:p-5 rounded-2xl border border-slate-100 shadow-sm shadow-slate-100/60">
-                    <p class="text-3xl md:text-4xl font-display font-extrabold text-slate-900">500+</p>
-                    <p class="text-xs md:text-sm font-semibold text-slate-500 tracking-wide uppercase">Learners trained</p>
+                <div class="stat-card p-4 md:p-5 rounded-2xl border border-slate-100 shadow-sm shadow-slate-100/60 bg-gradient-to-br from-white to-slate-50">
+                    <p class="text-3xl md:text-4xl font-display font-extrabold text-slate-900 gradient-text">500+</p>
+                    <p class="text-xs md:text-sm font-semibold text-slate-500 tracking-wide uppercase mt-2">Learners trained</p>
                 </div>
-                <div class="p-4 md:p-5 rounded-2xl border border-slate-100 shadow-sm shadow-slate-100/60">
-                    <p class="text-3xl md:text-4xl font-display font-extrabold text-slate-900">15+</p>
-                    <p class="text-xs md:text-sm font-semibold text-slate-500 tracking-wide uppercase">Programs & tracks</p>
+                <div class="stat-card p-4 md:p-5 rounded-2xl border border-slate-100 shadow-sm shadow-slate-100/60 bg-gradient-to-br from-white to-slate-50">
+                    <p class="text-3xl md:text-4xl font-display font-extrabold text-slate-900 gradient-text">15+</p>
+                    <p class="text-xs md:text-sm font-semibold text-slate-500 tracking-wide uppercase mt-2">Programs & tracks</p>
                 </div>
-                <div class="p-4 md:p-5 rounded-2xl border border-slate-100 shadow-sm shadow-slate-100/60">
-                    <p class="text-3xl md:text-4xl font-display font-extrabold text-slate-900">4.9/5</p>
-                    <p class="text-xs md:text-sm font-semibold text-slate-500 tracking-wide uppercase">Avg learner rating</p>
+                <div class="stat-card p-4 md:p-5 rounded-2xl border border-slate-100 shadow-sm shadow-slate-100/60 bg-gradient-to-br from-white to-slate-50">
+                    <p class="text-3xl md:text-4xl font-display font-extrabold text-slate-900 gradient-text">4.9/5</p>
+                    <p class="text-xs md:text-sm font-semibold text-slate-500 tracking-wide uppercase mt-2">Avg learner rating</p>
                 </div>
-                <div class="p-4 md:p-5 rounded-2xl border border-slate-100 shadow-sm shadow-slate-100/60">
-                    <p class="text-3xl md:text-4xl font-display font-extrabold text-slate-900">Pan-India</p>
-                    <p class="text-xs md:text-sm font-semibold text-slate-500 tracking-wide uppercase">Remote + on-campus</p>
+                <div class="stat-card p-4 md:p-5 rounded-2xl border border-slate-100 shadow-sm shadow-slate-100/60 bg-gradient-to-br from-white to-slate-50">
+                    <p class="text-3xl md:text-4xl font-display font-extrabold text-slate-900 gradient-text">Pan-India</p>
+                    <p class="text-xs md:text-sm font-semibold text-slate-500 tracking-wide uppercase mt-2">Remote + on-campus</p>
                 </div>
             </div>
         </div>
@@ -267,7 +268,7 @@
 
             <!-- Quick Links Grid -->
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                <a href="/about" class="group bg-gradient-to-br from-brand-50 to-purple-50 rounded-2xl md:rounded-3xl p-8 border-2 border-transparent hover:border-brand-200 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2" data-aos="fade-up">
+                <a href="/about" class="card-enhanced group bg-gradient-to-br from-brand-50 to-purple-50 rounded-2xl md:rounded-3xl p-8 border-2 border-transparent hover:border-brand-200 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2" data-aos="fade-up">
                     <div class="w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center text-brand-600 text-2xl mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-info-circle"></i>
                     </div>
@@ -278,7 +279,7 @@
                     </div>
                 </a>
 
-                <a href="/services" class="group bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl md:rounded-3xl p-8 border-2 border-transparent hover:border-purple-200 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+                <a href="/services" class="card-enhanced group bg-gradient-to-br from-purple-50 to-blue-50 rounded-2xl md:rounded-3xl p-8 border-2 border-transparent hover:border-purple-200 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center text-purple-600 text-2xl mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-briefcase"></i>
                     </div>
@@ -289,7 +290,7 @@
                     </div>
                 </a>
 
-                <a href="/programs" class="group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl md:rounded-3xl p-8 border-2 border-transparent hover:border-blue-200 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                <a href="/programs" class="card-enhanced group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl md:rounded-3xl p-8 border-2 border-transparent hover:border-blue-200 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center text-blue-600 text-2xl mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-graduation-cap"></i>
                     </div>
@@ -300,7 +301,7 @@
                     </div>
                 </a>
 
-                <a href="/life" class="group bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl md:rounded-3xl p-8 border-2 border-transparent hover:border-pink-200 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
+                <a href="/life" class="card-enhanced group bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl md:rounded-3xl p-8 border-2 border-transparent hover:border-pink-200 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="300">
                     <div class="w-16 h-16 rounded-2xl bg-white shadow-lg flex items-center justify-center text-pink-600 text-2xl mb-6 group-hover:scale-110 transition-transform">
                         <i class="fa-solid fa-images"></i>
                     </div>
@@ -321,7 +322,7 @@
                 <h3 class="text-3xl md:text-4xl font-display font-extrabold text-slate-900 mt-3">Accredited By</h3>
                 <div class="mx-auto mt-3 mb-8 h-1 w-20 bg-brand-600 rounded-full"></div>
                 <div class="relative overflow-hidden rounded-2xl border border-slate-200 shadow-xl bg-white p-4 md:p-8">
-                    <img src="images/MSME.png" alt="MSME accreditation certificate" class="mx-auto w-full max-w-3xl h-auto object-contain">
+                    <img src="images/MSME.png" alt="MSME accreditation certificate" class="mx-auto w-full max-w-3xl h-auto object-contain" loading="lazy">
                 </div>
                 <p class="mt-6 text-sm md:text-base font-semibold text-slate-700">Ministry of MSME, Govt. of India</p>
             </div>
@@ -338,7 +339,7 @@
                         
                         <img src="images/otturumai.jpg" 
                              alt="Partner Company" 
-                             class="h-24 md:h-40 w-auto object-contain grayscale group-hover:grayscale-0 opacity-80 group-hover:opacity-100 transition-all duration-300">
+                             class="h-24 md:h-40 w-auto object-contain grayscale group-hover:grayscale-0 opacity-80 group-hover:opacity-100 transition-all duration-300" loading="lazy">
                              
                     </div>
                 </div>
@@ -348,28 +349,29 @@
     <!-- Contact Section -->
     <section id="contact" class="py-16 md:py-32 bg-slate-950 text-white relative overflow-hidden">
         <!-- Background Glows -->
-        <div class="absolute top-0 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-brand-900/40 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 w-[200px] md:w-[400px] h-[200px] md:h-[400px] bg-purple-900/40 rounded-full blur-[80px] md:blur-[120px] pointer-events-none"></div>
+        <div class="absolute top-0 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-brand-900/40 rounded-full blur-[80px] md:blur-[120px] pointer-events-none animate-aurora"></div>
+        <div class="absolute bottom-0 left-0 w-[200px] md:w-[400px] h-[200px] md:h-[400px] bg-purple-900/40 rounded-full blur-[80px] md:blur-[120px] pointer-events-none animate-aurora" style="animation-delay: -5s;"></div>
+        <div class="absolute top-[50%] left-[50%] w-[400px] md:w-[500px] h-[400px] md:h-[500px] bg-pink-900/20 rounded-full blur-[100px] pointer-events-none animate-aurora" style="animation-delay: -10s;"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
                 <div data-aos="fade-right">
-                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-6 md:mb-8 leading-tight">Let's Build Something<br><span class="text-brand-500">Amazing.</span></h2>
+                    <h2 class="text-3xl md:text-5xl font-display font-bold mb-6 md:mb-8 leading-tight text-shadow-md">Let's Build Something<br><span class="gradient-text">Amazing.</span></h2>
                     <p class="text-slate-400 mb-8 md:mb-12 text-base md:text-lg leading-relaxed">Ready to start your journey? Reach out to us for paid internships, partnerships, or general inquiries.</p>
                     
                     <div class="space-y-6 md:space-y-8">
                         <!-- Contact Items -->
-                        <div class="flex items-center gap-4 md:gap-6 group">
-                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-400 text-lg md:text-xl group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                        <div class="flex items-center gap-4 md:gap-6 group cursor-pointer">
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-400 text-lg md:text-xl group-hover:bg-brand-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
                                 <i class="fa-solid fa-location-dot"></i>
                             </div>
                             <div>
                                 <h4 class="text-base md:text-lg font-bold text-white mb-1">Visit Us</h4>
-                                <p class="text-slate-400 text-sm">15 A rayan kuttai street kanchipuram Tamil Nadu, India</p>
+                                <p class="text-slate-400 text-sm group-hover:text-slate-300 transition-colors">15 A rayan kuttai street kanchipuram Tamil Nadu, India</p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4 md:gap-6 group">
-                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-400 text-lg md:text-xl group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                        <div class="flex items-center gap-4 md:gap-6 group cursor-pointer">
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-400 text-lg md:text-xl group-hover:bg-brand-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
                                 <i class="fa-solid fa-envelope"></i>
                             </div>
                             <div>
@@ -377,8 +379,8 @@
                                 <a href="mailto:contact@dakhedusolutions.in" class="text-slate-400 text-sm hover:text-brand-400 transition-colors">contact@dakhedusolutions.in</a>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4 md:gap-6 group">
-                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-400 text-lg md:text-xl group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                        <div class="flex items-center gap-4 md:gap-6 group cursor-pointer">
+                            <div class="w-12 h-12 md:w-14 md:h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-brand-400 text-lg md:text-xl group-hover:bg-brand-600 group-hover:text-white group-hover:scale-110 transition-all duration-300">
                                 <i class="fa-solid fa-phone"></i>
                             </div>
                             <div>
@@ -391,12 +393,12 @@
 
                 <div class="lg:pl-12" data-aos="fade-left">
                     <!-- Map -->
-                    <div class="w-full h-80 md:h-96 rounded-[2rem] overflow-hidden border-4 border-white/10 shadow-2xl grayscale hover:grayscale-0 transition-all duration-500 relative group">
+                    <div class="w-full h-80 md:h-96 rounded-[2rem] overflow-hidden border-4 border-white/10 shadow-2xl grayscale hover:grayscale-0 transition-all duration-500 relative group hover:scale-[1.02]">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31103.07666876316!2d79.68637364029337!3d12.83644743939306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a52c2f7e0c76759%3A0x54d9c037700774d0!2sKanchipuram%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1709663854321!5m2!1sen!2sin" 
                         width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         
                         <!-- Overlay Badge -->
-                        <div class="absolute bottom-6 left-6 bg-slate-900/90 backdrop-blur px-4 py-2 rounded-xl border border-white/20 flex items-center gap-3 transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                        <div class="absolute bottom-6 left-6 bg-slate-900/90 backdrop-blur-enhanced px-4 py-2 rounded-xl border border-white/20 flex items-center gap-3 transform translate-y-full opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                             <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
                             <span class="text-xs font-bold text-white">Open Now</span>
                         </div>
@@ -449,8 +451,8 @@
     </footer>
 
     <!-- Back to Top -->
-    <button id="back-to-top" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-brand-600 text-white shadow-xl shadow-brand-600/30 z-40 flex items-center justify-center transform translate-y-20 opacity-0 transition-all duration-500 hover:bg-slate-900 hover:scale-110">
-        <i class="fa-solid fa-arrow-up"></i>
+    <button id="back-to-top" class="fixed bottom-6 right-6 md:bottom-8 md:right-8 w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-brand-600 text-white shadow-xl shadow-brand-600/30 z-40 flex items-center justify-center transform translate-y-20 opacity-0 transition-all duration-500 hover:bg-slate-900 hover:scale-110" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up text-base md:text-lg" aria-hidden="true"></i>
     </button>
 
     <!-- Lightbox -->
