@@ -72,11 +72,12 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-btn" class="md:hidden p-2.5 text-slate-600 hover:text-brand-600 hover:bg-brand-50 rounded-xl transition-all duration-200 border border-transparent hover:border-brand-100 active:scale-95" aria-label="Open mobile menu" aria-expanded="false" aria-controls="mobile-menu">
-                    <i class="fa-solid fa-bars-staggered text-xl" aria-hidden="true"></i>
+                <button id="mobile-btn" class="md:hidden p-2.5 text-slate-600 hover:text-brand-600 hover:bg-brand-50 rounded-xl transition-all duration-200 border border-transparent hover:border-brand-100 active:scale-95">
+                    <i class="fa-solid fa-bars-staggered text-xl"></i>
                 </button>
             </div>
         </div>
+
 
         <!-- Mobile Menu Overlay -->
         <div id="mobile-menu" class="fixed inset-0 z-40 bg-white backdrop-blur-xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col shadow-2xl" role="dialog" aria-modal="true" aria-label="Mobile navigation menu">
@@ -97,10 +98,10 @@
             
             <!-- Mobile Menu Links -->
             <div class="flex-1 flex flex-col justify-start pt-8 px-6 sm:px-8 space-y-4 sm:space-y-6 overflow-y-auto">
-                <a href="/" class="py-3 px-4 rounded-xl text-xl sm:text-2xl font-display font-bold text-brand-600 bg-brand-50 transition-all duration-200 mobile-menu-link active:scale-95">
+                <a href="/" class="py-3 px-4 rounded-xl text-xl sm:text-2xl font-display font-bold text-slate-900 hover:text-brand-600 hover:bg-brand-50 transition-all duration-200 mobile-menu-link active:scale-95">
                     <i class="fa-solid fa-home mr-3 text-brand-600"></i>Home
                 </a>
-                <a href="/about" class="py-3 px-4 rounded-xl text-xl sm:text-2xl font-display font-bold text-slate-900 hover:text-brand-600 hover:bg-brand-50 transition-all duration-200 mobile-menu-link active:scale-95">
+                <a href="/about" class="py-3 px-4 rounded-xl text-xl sm:text-2xl font-display font-bold text-brand-600 bg-brand-50 transition-all duration-200 mobile-menu-link active:scale-95">
                     <i class="fa-solid fa-info-circle mr-3 text-brand-600"></i>About
                 </a>
                 <a href="/services" class="py-3 px-4 rounded-xl text-xl sm:text-2xl font-display font-bold text-slate-900 hover:text-brand-600 hover:bg-brand-50 transition-all duration-200 mobile-menu-link active:scale-95">
@@ -133,6 +134,7 @@
             </div>
         </div>
     </nav>
+
 
     <!-- Hero Section -->
     <section id="home" class="hero-enhanced relative min-h-screen flex items-center pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden bg-grid-slate-100" aria-label="Hero section">
